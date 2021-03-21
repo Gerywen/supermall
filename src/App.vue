@@ -30,4 +30,8 @@
   #app {
     position: relative;
   }
+/*  消除因为fastclick点击过快产生的报错*/
+  * {
+    touch-action: pan-y;
+  }
 </style>
