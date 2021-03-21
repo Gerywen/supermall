@@ -20,6 +20,7 @@
     <back-top @backTop="backTop" class="back-top" v-show="showBackTop">
       <img src="~assets/img/common/top.png" alt="">
     </back-top>
+
   </div>
 </template>
 
@@ -41,6 +42,7 @@
   import {getDetail, getRecommend, Goods, Shop, GoodsParam} from "network/detail";
   import {backTopMixin} from "@/common/mixin";
   import {BACKTOP_DISTANCE} from "@/common/const";
+  import { mapActions } from 'vuex'
 
   export default {
 		name: "Detail",
@@ -55,7 +57,7 @@
 		  Scroll,
 		  DetailNavBar,
       DetailSwiper,
-      BackTop
+      BackTop,
     },
     mixins: [backTopMixin],
     data() {
@@ -69,7 +71,8 @@
         commentInfo: {},
         recommendList: [],
         themeTops: [],
-        currentIndex: 0
+        currentIndex: 0,
+
       }
     },
     created() {
@@ -81,6 +84,7 @@
       this._getOffsetTops()
     },
     methods: {
+		  ...mapActions(['addCart']),
 		  _getOffsetTops() {
 		    this.themeTops = []
         this.themeTops.push(this.$refs.base.$el.offsetTop)
@@ -136,7 +140,12 @@
         obj.desc = this.goods.desc;
         obj.newPrice = this.goods.nowPrice;
         // 3.添加到Store中
-        this.$store.dispatch('addCart', obj)
+        this.addCart(obj).then(res=>{
+          this.$toast.center(res)
+        })
+        // this.$store.dispatch('addCart', obj).then(res=>{
+        //   console.log(res)
+        // })
       },
 		  _getDetailData() {
 		    // 1.获取iid

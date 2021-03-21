@@ -5,12 +5,14 @@
     <!--列表-->
     <cart-list class="cart-list" :cart-lists="cartList"></cart-list>
     <!--底部汇总-->
+    <cart-bottom-bar/>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/common/navbar/NavBar";
 import CartList from "@/views/cart/childComps/CartList";
+import CartBottomBar from "@/views/cart/childComps/CartBottomBar";
 import Scroll from "@/components/common/scroll/Scroll";
 
 import { mapGetters } from 'vuex'
@@ -19,6 +21,7 @@ export default {
   components: {
     NavBar,
     CartList,
+    CartBottomBar,
     Scroll
   },
   computed: {

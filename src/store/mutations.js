@@ -7,6 +7,7 @@ const mutations = {
     info.count++
   },
   [ADD_TO_CART](state,info) {
+    info.checked = true
     state.cartList.push(info)
   }
 }
