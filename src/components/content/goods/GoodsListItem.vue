@@ -45,8 +45,10 @@
   width: 100%;
   break-inside: avoid;
 }
+
 .goods-item img {
   width: 100%;
+  /*height: 100%;*/
   border-radius: 5px;
 }
 

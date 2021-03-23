@@ -65,9 +65,8 @@
 
 <style scoped>
 .grid-view {
-  width: 100%;
-  margin: 20px auto;
-  columns: 2;
-  column-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  /*margin-bottom: 49px;*/
 }
 </style>
